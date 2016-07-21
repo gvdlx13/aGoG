@@ -11,6 +11,7 @@ public class MusicManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
         Debug.Log("Don't Destory on Load" + name);
         audioSource = GetComponent<AudioSource>();
+        audioSource.volume = PlayerPrefsManager.GetMasterVolume();
     }
 
 	void Start () {
@@ -32,5 +33,11 @@ public class MusicManager : MonoBehaviour {
             audioSource.loop = true;
             audioSource.Play();
         }
+    }
+
+
+    public void ChangeVolume(float newVolume)
+    {
+        audioSource.volume = newVolume;
     }
 }
